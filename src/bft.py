@@ -4,6 +4,18 @@ from collections import deque
 from typing import Iterable
 from tree import T
 
+def bf_order_D_L(D: deque([T]), L: list[int]):
+    N = deque([])
+    for t in D:
+        if(t!=None):
+            N.append(t.left)
+            N.append(t.right)
+            L.append(t.val)
+    if (N != deque([])):
+        bf_order_D_L(N, L)
+
+
+
 
 def bf_order(t: T | None) -> Iterable[int]:
     """Breadth-first traversal of a tree.
@@ -12,4 +24,9 @@ def bf_order(t: T | None) -> Iterable[int]:
     >>> list(bf_order(tree))
     [2, 1, 4, 3, 5]
     """
-    return  # FIXME
+    D = deque([])
+    L = []
+    if(t!=None):
+        D.append(t)
+        bf_order_D_L(D, L)
+    return  L
