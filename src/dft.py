@@ -2,6 +2,7 @@
 
 from typing import Iterable
 from tree import T
+from collections import deque
 
 def in_order_L(t: T | None, L: list[int]):
     if(t!=None):
@@ -18,6 +19,19 @@ def in_order(t: T | None) -> Iterable[int]:
     [1, 2, 3, 4, 5]
     """
     L = []
-    in_order_L(t, L)
+    #in_order_L(t, L)
+    S = []
+    if(t!=None):
+        S.append(t)
+        while(S!=[]):
+            s = S.pop()
+            if(s.left!=None):
+                S.append(T(s.val,None,s.right))
+                S.append(s.left)
+            else:
+                L.append(s.val)
+                if(s.right!=None):
+                    S.append(s.right)
 
     return L
+
