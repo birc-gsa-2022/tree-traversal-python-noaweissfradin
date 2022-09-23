@@ -3,6 +3,12 @@
 from typing import Iterable
 from tree import T
 
+def in_order_L(t: T | None, L: list[int]):
+    if(t!=None):
+        in_order_L(t.left,L)
+        L.append(t.val)
+        in_order_L(t.right,L)
+
 
 def in_order(t: T | None) -> Iterable[int]:
     """In-order traversal of a tree.
@@ -11,4 +17,7 @@ def in_order(t: T | None) -> Iterable[int]:
     >>> list(in_order(tree))
     [1, 2, 3, 4, 5]
     """
-    return  # FIXME
+    L = []
+    in_order_L(t, L)
+
+    return L
