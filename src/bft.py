@@ -5,6 +5,8 @@ from typing import Iterable
 from tree import T
 
 def bf_order_D_L(D: deque([T]), L: list[int]):
+    """Just a recursive function to understand
+    Not the real working function"""
     N = deque([])
     for t in D:
         if(t!=None):
@@ -28,5 +30,13 @@ def bf_order(t: T | None) -> Iterable[int]:
     L = []
     if(t!=None):
         D.append(t)
-        bf_order_D_L(D, L)
+        while D!=deque([]):
+            if(t!=None):
+                t = D.popleft()
+                if(t.left!=None):
+                    D.append(t.left)
+                if(t.right!=None):
+                    D.append(t.right)
+                L.append(t.val)
+                
     return  L
