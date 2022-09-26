@@ -30,7 +30,7 @@ def bf_order(t: T | None) -> Iterable[int]:
     L = []
     if(t!=None):
         D.append(t)
-        while D!=deque([]):
+        while D:
             if(t!=None):
                 t = D.popleft()
                 if(t.left!=None):
