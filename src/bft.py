@@ -31,12 +31,11 @@ def bf_order(t: T | None) -> Iterable[int]:
     if(t!=None):
         D.append(t)
         while D:
-            if(t!=None):
-                t = D.popleft()
-                if(t.left!=None):
-                    D.append(t.left)
-                if(t.right!=None):
-                    D.append(t.right)
-                L.append(t.val)
+            t = D.popleft()
+            if(t.left!=None):
+                D.append(t.left)
+            if(t.right!=None):
+                D.append(t.right)
+            L.append(t.val)
                 
     return  L
